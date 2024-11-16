@@ -2,6 +2,62 @@
   List of all movies
 </h1>
 
+<form action="/insert_movie" method="post">
+  <div>
+    <label for="movie_title">
+      Title
+    </label>
+    <input id="movie_title" name="user_input_movie_title" type="text">
+  </div>
+
+  <div>
+    <label for="movie_year">
+      Year
+    </label>
+    <input id="movie_year" name="user_input_movie_year" type="int">
+  </div>
+
+  <div>
+    <label for="movie_duration">
+      Duration
+    </label>
+    <input id="movie_duration" name="user_input_movie_duration" type="int">
+  </div>
+
+  <div>
+    <label for="movie_desc">
+      Description
+    </label>
+    <input id="movie_desc" name="user_input_movie_desc" type="text">
+  </div>
+
+  <div>
+    <label for="movie_image">
+      Image
+    </label>
+    <input id="movie_image" name="user_input_movie_image" type="text">
+  </div>
+
+  <div>
+    <label for="movie_director_id">
+      Director ID
+    </label>
+    <input id="movie_director_id" name="user_input_movie_director_id" type="int">
+  </div>
+
+  <button>Create movie</button>
+</form>
+
+
+
+
+
+<!---->
+
+
+
+
+
 <hr>
 
 <table border="1">
@@ -52,6 +108,12 @@
       <% matching_directors = Director.where({ :id => a_movie.director_id }) %>
       
       <% the_director = matching_directors.at(0) %>
+
+          <% if the_director == nil %>
+      Uh oh! We weren't able to find a director for this movie.	
+          <% else %>
+            <%= the_director.name %>
+          <% end %>
 
       <%= the_director.name %>
     </td>

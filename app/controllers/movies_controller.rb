@@ -14,4 +14,17 @@ class MoviesController < ApplicationController
 
     render({ :template => "movie_templates/show" })
   end
+
+  def create
+    m = Movie.new
+    m.title = params.fetch("user_input_movie_title")
+    m.year = params.fetch("user_input_movie_year")
+    m.duration = params.fetch("user_input_movie_duration")
+    m.description = params.fetch("user_input_movie_desc")
+    m.image = params.fetch("user_input_movie_image")
+    m.director_id = params.fetch("user_input_movie_director_id")
+    m.save
+
+    redirect_to("/movies")
+  end 
 end
